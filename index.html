@@ -3,220 +3,250 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ben Bernard | Portfolio</title>
+  <title>Ben‑Yahu | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #0b0b10;
-      --card: #15151f;
-      --text: #e6e6eb;
-      --muted: #a6a6b3;
-      --accent: #8ab4ff;
-      --border: #262635;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-      background: radial-gradient(1200px 600px at 20% -10%, #151522, transparent), var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #0f2027, #000);
+      color: #eaeaea;
     }
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 80px 24px 120px;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin: 0;
-      letter-spacing: -0.02em;
-    }
-
-    .subtitle {
-      color: var(--muted);
-      margin-top: 0.6rem;
-      max-width: 720px;
-    }
-
-    h2 {
-      margin-top: 4rem;
-      font-size: 1.8rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.4rem;
-    }
-
-    p {
-      max-width: 760px;
-      color: #cfcfd6;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* Project Grid */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 2rem;
-    }
-
-    .project-card {
-      background: linear-gradient(180deg, #171723, var(--card));
-      border: 1px solid var(--border);
-      border-radius: 18px;
+    header {
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+      position: relative;
       overflow: hidden;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
-
-    .project-card:hover {
-      transform: translateY(-6px);
+    header::before {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      background: radial-gradient(circle at 30% 30%, rgba(124,124,255,0.25), transparent 40%),
+                  radial-gradient(circle at 70% 40%, rgba(110,231,255,0.18), transparent 45%);
+      animation: float 18s linear infinite;
+      z-index: -1;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(-120px) rotate(360deg); }
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #6ee7ff, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    header p {
+      max-width: 720px;
+      margin: auto;
+      opacity: 0.85;
+      font-size: 1.1rem;
+    }
+    section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      border-left: 4px solid #7c7cff;
+      padding-left: 1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      animation: fadeUp 0.8s ease both;
+      animation-delay: calc(var(--i, 0) * 0.08s);
+      background: rgba(255,255,255,0.05);
+      border-radius: 20px;
+      padding: 1.8rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(124,124,255,0.15), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-8px);
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
-
-    .project-image {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      background: #222233;
-    }
-
-    .project-content {
-      padding: 20px;
-    }
-
-    .project-content h3 {
+    .card:hover::before { opacity: 1; }
+    .card h3 {
       margin-top: 0;
-      margin-bottom: 0.4rem;
       font-size: 1.25rem;
+      font-weight: 700;
     }
-
-    .project-content p {
-      font-size: 0.95rem;
-      margin-bottom: 0.8rem;
+    .meta {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-bottom: 0.6rem;
     }
-
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 0.8rem;
+      gap: 0.4rem;
+      margin-top: 1rem;
     }
-
     .tag {
-      font-size: 0.75rem;
-      padding: 4px 8px;
+      font-size: 0.7rem;
+      padding: 0.3rem 0.6rem;
       border-radius: 999px;
-      background: #1f1f2e;
-      border: 1px solid var(--border);
-      color: var(--muted);
+      background: rgba(124,124,255,0.15);
+      color: #c7c7ff;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .footer {
-      margin-top: 6rem;
+    footer {
+      text-align: center;
+      padding: 2rem;
+      opacity: 0.6;
       font-size: 0.9rem;
-      color: var(--muted);
     }
   </style>
 </head>
 <body>
-  <div class="container">
 
-    <!-- Header -->
-    <h1>Ben Bernard</h1>
-    <div class="subtitle">
-      Aspiring Cognitive Robotics Engineer<br />
-      Exploring intelligence through AI models, perception, and simulation.
+<header>
+  <h1>Ben‑Yahu</h1>
+  <p>AI • Deep Learning • Medical Imaging • Robotics
+     <br/>Building intelligent systems that bridge research and real‑world impact.</p>
+</header>
+
+<section>
+  <div class="section-title">Focus & Direction</div>
+  <div class="grid">
+    <div class="card">
+      <h3>Medical AI & Imaging</h3>
+      <p>Designing deep learning systems for diagnosis, prognosis, and clinical decision support using MRI, X-ray, and histopathological data.</p>
+      <div class="tags"><span class="tag">MRI</span><span class="tag">X-Ray</span><span class="tag">Healthcare AI</span></div>
+    </div>
+    <div class="card">
+      <h3>Applied Machine Learning</h3>
+      <p>End-to-end ML pipelines involving preprocessing, feature engineering, optimization, and deployment-ready model evaluation.</p>
+      <div class="tags"><span class="tag">XGBoost</span><span class="tag">Optimization</span><span class="tag">Data Science</span></div>
+    </div>
+    <div class="card">
+      <h3>Robotics & Intelligent Systems</h3>
+      <p>Building autonomous systems combining sensing, decision-making, and environmental analysis for real-world impact.</p>
+      <div class="tags"><span class="tag">Robotics</span><span class="tag">Autonomy</span><span class="tag">IoT</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">Currently Exploring</div>
+  <div class="grid">
+    <div class="card">
+      <h3>Large Language Models</h3>
+      <p>Exploring transformer architectures, fine-tuning strategies, and efficiency techniques for real-world deployment.</p>
+      <div class="tags"><span class="tag">Transformers</span><span class="tag">LLMs</span><span class="tag">NLP</span></div>
+    </div>
+    <div class="card">
+      <h3>Multimodal Intelligence</h3>
+      <p>Combining vision, language, and structured data to build systems that reason across multiple modalities.</p>
+      <div class="tags"><span class="tag">Vision</span><span class="tag">Multimodal</span><span class="tag">AI</span></div>
+    </div>
+    <div class="card">
+      <h3>Autonomous Systems</h3>
+      <p>Decision-making pipelines for robots and agents operating under uncertainty in dynamic environments.</p>
+      <div class="tags"><span class="tag">Autonomy</span><span class="tag">Planning</span><span class="tag">Robotics</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">Featured Projects</div>
+  <div class="grid">
+
+    <div class="card">
+      <img src="images/iris.jpg" alt="Iris Recognition" style="width:100%;border-radius:14px;margin-bottom:1rem;opacity:0.85;"/>
+      <h3>CASIA Iris Authentication</h3>
+      <div class="meta">Deep Learning · Biometrics</div>
+      <p>EfficientNet‑B0 based iris recognition system identifying 100 subjects with ~90% accuracy and 97% left/right eye differentiation, robust to glasses.</p>
+      <div class="tags"><span class="tag">CNN</span><span class="tag">EfficientNet</span><span class="tag">Computer Vision</span></div>
     </div>
 
-    <!-- About -->
-    <h2>About Me</h2>
-    <p>
-      I’m an aspiring engineer focused on understanding how intelligent systems work, from machine learning models to perception and simulation in robotics.
-    </p>
-    <p>
-      Most of my work is hands-on and exploratory, driven by curiosity and the desire to understand systems beyond surface-level results.
-    </p>
-    <p>
-      I’m currently building projects that strengthen my foundation in AI, robotics, and engineering discipline, with the long-term goal of working on intelligent, autonomous systems.
-    </p>
-
-    <!-- Projects -->
-    <h2>Featured Projects</h2>
-    <div class="projects">
-
-      <div class="project-card">
-        <img class="project-image" src="images/falcon.jpg" alt="Falcon RW Model" />
-        <div class="project-content">
-          <h3>Falcon-RW-1B</h3>
-          <p>Exploration of a large RW-based language model with focus on architecture, inference behavior, and experimentation.</p>
-          <div class="tags">
-            <span class="tag">LLMs</span>
-            <span class="tag">PyTorch</span>
-            <span class="tag">Inference</span>
-          </div>
-          <a href="https://github.com/ben-yahu/Falcon-RW-1B" target="_blank">View on GitHub →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <img class="project-image" src="images/robotics.jpg" alt="Robotics Simulation" />
-        <div class="project-content">
-          <h3>Robotics Workspace</h3>
-          <p>Robotics-focused workspace exploring simulation, perception pipelines, and system-level thinking.</p>
-          <div class="tags">
-            <span class="tag">Robotics</span>
-            <span class="tag">Simulation</span>
-            <span class="tag">Perception</span>
-          </div>
-          <a href="https://github.com/ben-yahu/Robotics" target="_blank">View on GitHub →</a>
-        </div>
-      </div>
-
-      <div class="project-card">
-        <img class="project-image" src="images/projects.jpg" alt="AI Projects" />
-        <div class="project-content">
-          <h3>Selected AI / ML Projects</h3>
-          <p>Curated AI and ML mini-projects focused on learning core concepts through implementation.</p>
-          <div class="tags">
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Experiments</span>
-          </div>
-          <a href="https://github.com/ben-yahu/Projects" target="_blank">View on GitHub →</a>
-        </div>
-      </div>
-
+    <div class="card">
+      <img src="images/alzheimer_mri.jpg" alt="Alzheimer MRI" style="width:100%;border-radius:14px;margin-bottom:1rem;opacity:0.85;"/>
+      <h3>Alzheimer MRI Classification</h3>
+      <div class="meta">Medical Imaging · AI for Healthcare</div>
+      <p>Augmented MRI dataset with deep learning models for early Alzheimer’s detection, improving diagnostic robustness and generalization.</p>
+      <div class="tags"><span class="tag">MRI</span><span class="tag">Data Augmentation</span><span class="tag">Healthcare AI</span></div>
     </div>
 
-    <!-- Skills -->
-    <h2>Skills</h2>
-    <p><strong>Core Areas:</strong> Artificial Intelligence, Machine Learning, Robotics, Simulation</p>
-    <p><strong>Tools & Technologies:</strong> Python, PyTorch, Git, Linux</p>
-    <p><strong>Currently Learning:</strong> Advanced perception, planning, and control</p>
+    <div class="card">
+      <img src="images/brain_tumor.jpg" alt="Brain Tumor MRI" style="width:100%;border-radius:14px;margin-bottom:1rem;opacity:0.85;"/>
+      <h3>Brain Tumor Detection</h3>
+      <div class="meta">CNN · Medical Diagnosis</div>
+      <p>Developed a CNN‑based classifier to detect brain tumors from MRI scans, assisting faster and more reliable clinical decision‑making.</p>
+      <div class="tags"><span class="tag">TensorFlow</span><span class="tag">CNN</span><span class="tag">MRI</span></div>
+    </div>
 
-    <!-- Learning -->
-    <h2>Learning & Foundations</h2>
-    <p>Supporting coursework, study materials, and certifications that complement my project work.</p>
-    <a href="https://github.com/ben-yahu/Study-Materials" target="_blank">Study Materials →</a><br />
-    <a href="https://github.com/ben-yahu/Certificates" target="_blank">Certificates →</a>
+    <div class="card">
+      <h3>Bone Fracture X‑Ray Classification</h3>
+      <div class="meta">Medical Vision · Deep Learning</div>
+      <p>Multi‑region X‑ray classification system differentiating fractures across body regions for accurate and timely diagnosis.</p>
+      <div class="tags"><span class="tag">X‑Ray</span><span class="tag">Deep Learning</span><span class="tag">Healthcare</span></div>
+    </div>
 
-    <!-- Footer -->
-    <div class="footer">
-      <p>GitHub: <a href="https://github.com/ben-yahu" target="_blank">github.com/ben-yahu</a></p>
+    <div class="card">
+      <h3>Academic Success Prediction</h3>
+      <div class="meta">Machine Learning · XGBoost</div>
+      <p>Student outcome classification (Graduate / Dropout / Enrolled) using feature engineering and hyperparameter‑tuned XGBoost, achieving 83% accuracy.</p>
+      <div class="tags"><span class="tag">XGBoost</span><span class="tag">Data Science</span><span class="tag">ML</span></div>
+    </div>
+
+    <div class="card">
+      <h3>Differentiated Thyroid Cancer Recurrence</h3>
+      <div class="meta">Clinical ML · Prediction</div>
+      <p>Predictive model using 13 clinicopathologic features over long‑term patient data, achieving 96.88% accuracy.</p>
+      <div class="tags"><span class="tag">Clinical Data</span><span class="tag">ML</span><span class="tag">Healthcare</span></div>
     </div>
 
   </div>
+</section>
+
+<section>
+  <div class="section-title">Publications & Robotics</div>
+  <div class="grid">
+
+    <div class="card">
+      <h3>Autonomous Farming Robot</h3>
+      <div class="meta">Robotics · Environmental Analysis</div>
+      <p>Published research on an autonomous agricultural robot capable of weeding, spraying, and real‑time environmental sensing to improve yield and reduce labor.</p>
+      <div class="tags"><span class="tag">Robotics</span><span class="tag">IoT</span><span class="tag">Autonomy</span></div>
+    </div>
+
+    <div class="card">
+      <h3>IoT‑Based Smart Door Security</h3>
+      <div class="meta">IoT · Embedded Systems</div>
+      <p>ESP8266‑based smart lock system with sensors, alerts, LCD feedback, and mobile notifications via Blynk for enhanced home security.</p>
+      <div class="tags"><span class="tag">ESP8266</span><span class="tag">IoT</span><span class="tag">Embedded</span></div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 Ben‑Yahu · Built with curiosity & intent
+</footer>
+
 </body>
 </html>
