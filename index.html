@@ -5,68 +5,141 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ben Bernard | Portfolio</title>
   <style>
+    :root {
+      --bg: #0b0b10;
+      --card: #15151f;
+      --text: #e6e6eb;
+      --muted: #a6a6b3;
+      --accent: #8ab4ff;
+      --border: #262635;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-      background: #0f0f14;
-      color: #e6e6eb;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, #151522, transparent), var(--bg);
+      color: var(--text);
       line-height: 1.6;
     }
+
     .container {
-      max-width: 900px;
+      max-width: 1100px;
       margin: auto;
-      padding: 60px 24px;
+      padding: 80px 24px 120px;
     }
+
     h1 {
-      font-size: 2.6rem;
-      margin-bottom: 0.2em;
+      font-size: 3rem;
+      margin: 0;
+      letter-spacing: -0.02em;
     }
-    h2 {
-      margin-top: 3rem;
-      font-size: 1.6rem;
-      border-bottom: 1px solid #2a2a35;
-      padding-bottom: 0.3rem;
-    }
-    h3 {
-      margin-top: 1.6rem;
-      font-size: 1.2rem;
-    }
-    p {
+
+    .subtitle {
+      color: var(--muted);
+      margin-top: 0.6rem;
       max-width: 720px;
+    }
+
+    h2 {
+      margin-top: 4rem;
+      font-size: 1.8rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    p {
+      max-width: 760px;
       color: #cfcfd6;
     }
-    ul {
-      padding-left: 1.2rem;
-    }
-    li {
-      margin-bottom: 0.4rem;
-    }
+
     a {
-      color: #8ab4ff;
+      color: var(--accent);
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
     }
-    .subtitle {
-      color: #a6a6b3;
-      margin-bottom: 2rem;
+
+    /* Project Grid */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 2rem;
     }
-    .project {
-      margin-bottom: 2.2rem;
+
+    .project-card {
+      background: linear-gradient(180deg, #171723, var(--card));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: #222233;
+    }
+
+    .project-content {
+      padding: 20px;
+    }
+
+    .project-content h3 {
+      margin-top: 0;
+      margin-bottom: 0.4rem;
+      font-size: 1.25rem;
+    }
+
+    .project-content p {
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 0.8rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #1f1f2e;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
     .footer {
-      margin-top: 4rem;
+      margin-top: 6rem;
       font-size: 0.9rem;
-      color: #9a9aa6;
+      color: var(--muted);
     }
   </style>
 </head>
 <body>
   <div class="container">
+
     <!-- Header -->
     <h1>Ben Bernard</h1>
-    <div class="subtitle">Aspiring Cognitive Robotics Engineer<br />Exploring intelligence through AI models, perception, and simulation.</div>
+    <div class="subtitle">
+      Aspiring Cognitive Robotics Engineer<br />
+      Exploring intelligence through AI models, perception, and simulation.
+    </div>
 
     <!-- About -->
     <h2>About Me</h2>
@@ -82,37 +155,49 @@
 
     <!-- Projects -->
     <h2>Featured Projects</h2>
+    <div class="projects">
 
-    <div class="project">
-      <h3>Falcon-RW-1B</h3>
-      <p>Exploration of a large RW-based language model with focus on architecture, inference behavior, and experimentation.</p>
-      <ul>
-        <li><strong>Focus:</strong> Model architecture, inference, experimentation</li>
-        <li><strong>Tech:</strong> Python, PyTorch</li>
-        <li><strong>Learning:</strong> Model scaling behavior, practical limitations of large models</li>
-      </ul>
-      <a href="https://github.com/ben-yahu/Falcon-RW-1B" target="_blank">View on GitHub →</a>
-    </div>
+      <div class="project-card">
+        <img class="project-image" src="images/falcon.jpg" alt="Falcon RW Model" />
+        <div class="project-content">
+          <h3>Falcon-RW-1B</h3>
+          <p>Exploration of a large RW-based language model with focus on architecture, inference behavior, and experimentation.</p>
+          <div class="tags">
+            <span class="tag">LLMs</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Inference</span>
+          </div>
+          <a href="https://github.com/ben-yahu/Falcon-RW-1B" target="_blank">View on GitHub →</a>
+        </div>
+      </div>
 
-    <div class="project">
-      <h3>Robotics Workspace</h3>
-      <p>A robotics-focused workspace exploring simulation, perception pipelines, and system-level thinking.</p>
-      <ul>
-        <li><strong>Focus:</strong> Simulation, perception, experimentation</li>
-        <li><strong>Tech:</strong> Python, ROS, Gazebo (as applicable)</li>
-        <li><strong>Learning:</strong> Robotics workflows, integration challenges</li>
-      </ul>
-      <a href="https://github.com/ben-yahu/Robotics" target="_blank">View on GitHub →</a>
-    </div>
+      <div class="project-card">
+        <img class="project-image" src="images/robotics.jpg" alt="Robotics Simulation" />
+        <div class="project-content">
+          <h3>Robotics Workspace</h3>
+          <p>Robotics-focused workspace exploring simulation, perception pipelines, and system-level thinking.</p>
+          <div class="tags">
+            <span class="tag">Robotics</span>
+            <span class="tag">Simulation</span>
+            <span class="tag">Perception</span>
+          </div>
+          <a href="https://github.com/ben-yahu/Robotics" target="_blank">View on GitHub →</a>
+        </div>
+      </div>
 
-    <div class="project">
-      <h3>Selected AI / ML Projects</h3>
-      <p>A curated collection of smaller AI and ML projects focused on learning core concepts through implementation.</p>
-      <ul>
-        <li><strong>Focus:</strong> Core ML concepts, experimentation</li>
-        <li><strong>Learning:</strong> Practical understanding through iterative projects</li>
-      </ul>
-      <a href="https://github.com/ben-yahu/Projects" target="_blank">View on GitHub →</a>
+      <div class="project-card">
+        <img class="project-image" src="images/projects.jpg" alt="AI Projects" />
+        <div class="project-content">
+          <h3>Selected AI / ML Projects</h3>
+          <p>Curated AI and ML mini-projects focused on learning core concepts through implementation.</p>
+          <div class="tags">
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Experiments</span>
+          </div>
+          <a href="https://github.com/ben-yahu/Projects" target="_blank">View on GitHub →</a>
+        </div>
+      </div>
+
     </div>
 
     <!-- Skills -->
@@ -131,6 +216,7 @@
     <div class="footer">
       <p>GitHub: <a href="https://github.com/ben-yahu" target="_blank">github.com/ben-yahu</a></p>
     </div>
+
   </div>
 </body>
 </html>
