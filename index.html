@@ -1,252 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ben‑Yahu | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at top, #0f2027, #000);
-      color: #eaeaea;
-    }
-    header {
-      padding: 6rem 2rem 4rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    header::before {
-      content: '';
-      position: absolute;
-      inset: -50%;
-      background: radial-gradient(circle at 30% 30%, rgba(124,124,255,0.25), transparent 40%),
-                  radial-gradient(circle at 70% 40%, rgba(110,231,255,0.18), transparent 45%);
-      animation: float 18s linear infinite;
-      z-index: -1;
-    }
-    @keyframes float {
-      0% { transform: translateY(0) rotate(0deg); }
-      100% { transform: translateY(-120px) rotate(360deg); }
-    }
-    header h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(90deg, #6ee7ff, #a78bfa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    header p {
-      max-width: 720px;
-      margin: auto;
-      opacity: 0.85;
-      font-size: 1.1rem;
-    }
-    section {
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .section-title {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 2rem;
-      border-left: 4px solid #7c7cff;
-      padding-left: 1rem;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    .card {
-      animation: fadeUp 0.8s ease both;
-      animation-delay: calc(var(--i, 0) * 0.08s);
-      background: rgba(255,255,255,0.05);
-      border-radius: 20px;
-      padding: 1.8rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent, rgba(124,124,255,0.15), transparent);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    }
-    .card:hover::before { opacity: 1; }
-    .card h3 {
-      margin-top: 0;
-      font-size: 1.25rem;
-      font-weight: 700;
-    }
-    .meta {
-      font-size: 0.85rem;
-      opacity: 0.7;
-      margin-bottom: 0.6rem;
-    }
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 1rem;
-    }
-    .tag {
-      font-size: 0.7rem;
-      padding: 0.3rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(124,124,255,0.15);
-      color: #c7c7ff;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      opacity: 0.6;
-      font-size: 0.9rem;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Ben‑Yahu — Researcher & Engineer: AI, medical imaging, robotics. Projects, publications, and contact." />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Ben‑Yahu · Portfolio</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+  <meta property="og:title" content="Ben‑Yahu · Portfolio">
+  <meta property="og:description" content="Researcher & Engineer — AI, Medical Imaging, Robotics. Projects, publications, and contact.">
+  <meta property="og:image" content="images/optimized/social-preview.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="images/optimized/social-preview.png">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/optimized/social-preview.png">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav">
+      <div class="brand">Ben‑Yahu</div>
+      <button class="nav-toggle" aria-controls="nav-list" aria-expanded="false">☰</button>
+      <ul id="nav-list" class="nav-list">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-toggle" aria-pressed="false">🌗</button>
+    </nav>
 
-<header>
-  <h1>Ben‑Yahu</h1>
-  <p>AI • Deep Learning • Medical Imaging • Robotics
-     <br/>Building intelligent systems that bridge research and real‑world impact.</p>
-</header>
-
-<section>
-  <div class="section-title">Focus & Direction</div>
-  <div class="grid">
-    <div class="card">
-      <h3>Medical AI & Imaging</h3>
-      <p>Designing deep learning systems for diagnosis, prognosis, and clinical decision support using MRI, X-ray, and histopathological data.</p>
-      <div class="tags"><span class="tag">MRI</span><span class="tag">X-Ray</span><span class="tag">Healthcare AI</span></div>
+    <div class="hero">
+      <div class="hero-inner">
+        <h1 class="hero-title">Ben‑Yahu</h1>
+        <p class="hero-sub">Researcher & Engineer — AI, Medical Imaging, Robotics. Building systems that bridge research and real-world impact.</p>
+        <p class="hero-cta">
+          <a class="btn" href="#projects">See Featured Work</a>
+          <a class="btn btn-muted" href="#contact">Get in touch</a>
+        </p>
+      </div>
+      <div class="hero-art" aria-hidden="true"></div>
     </div>
-    <div class="card">
-      <h3>Applied Machine Learning</h3>
-      <p>End-to-end ML pipelines involving preprocessing, feature engineering, optimization, and deployment-ready model evaluation.</p>
-      <div class="tags"><span class="tag">XGBoost</span><span class="tag">Optimization</span><span class="tag">Data Science</span></div>
-    </div>
-    <div class="card">
-      <h3>Robotics & Intelligent Systems</h3>
-      <p>Building autonomous systems combining sensing, decision-making, and environmental analysis for real-world impact.</p>
-      <div class="tags"><span class="tag">Robotics</span><span class="tag">Autonomy</span><span class="tag">IoT</span></div>
-    </div>
-  </div>
-</section>
+  </header>
 
-<section>
-  <div class="section-title">Currently Exploring</div>
-  <div class="grid">
-    <div class="card">
-      <h3>Large Language Models</h3>
-      <p>Exploring transformer architectures, fine-tuning strategies, and efficiency techniques for real-world deployment.</p>
-      <div class="tags"><span class="tag">Transformers</span><span class="tag">LLMs</span><span class="tag">NLP</span></div>
-    </div>
-    <div class="card">
-      <h3>Multimodal Intelligence</h3>
-      <p>Combining vision, language, and structured data to build systems that reason across multiple modalities.</p>
-      <div class="tags"><span class="tag">Vision</span><span class="tag">Multimodal</span><span class="tag">AI</span></div>
-    </div>
-    <div class="card">
-      <h3>Autonomous Systems</h3>
-      <p>Decision-making pipelines for robots and agents operating under uncertainty in dynamic environments.</p>
-      <div class="tags"><span class="tag">Autonomy</span><span class="tag">Planning</span><span class="tag">Robotics</span></div>
-    </div>
-  </div>
-</section>
+  <main id="main">
+    <section id="about" class="section container">
+      <h2 class="section-title">About</h2>
+      <div class="lead">I design and deploy ML systems across medical imaging, biometrics, and autonomous systems — from prototypes to production-ready models focused on robustness and clinical impact.</div>
+      <div class="split">
+        <div>
+          <h3>Focus & Direction</h3>
+          <p>Medical AI, model reliability, multimodal research, and robotics. I combine principled research with practical engineering to deliver reproducible results.</p>
+          <ul class="skills">
+            <li>Deep Learning · CNNs & Transformers</li>
+            <li>Medical Imaging · MRI/X‑Ray/Histopathology</li>
+            <li>Robotics · Autonomy & Sensing</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <p id="contact">Email: <a href="mailto:ben@youremail.com">ben@youremail.com</a></p>
+          <p>Open to collaborations, research reviews, and industry partnerships.</p>
+        </div>
+      </div>
+    </section>
 
-<section>
-  <div class="section-title">Featured Projects</div>
-  <div class="grid">
+    <section id="projects" class="section container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="grid">
+        <article class="card" style="--i:0">
+          <figure class="media">
+            <picture>
+              <source srcset="images/optimized/iris.webp" type="image/webp">
+              <img src="images/optimized/iris.jpg" alt="Iris recognition — sample of CASIA dataset used in project" loading="lazy">
+            </picture>
+          </figure>
+          <h3>CASIA Iris Authentication</h3>
+          <p class="meta">Deep Learning · Biometrics</p>
+          <p>EfficientNet‑B0 iris recognition with robust left/right differentiation and practical accuracy for constrained devices.</p>
+          <div class="tags"><span>Computer Vision</span><span>EfficientNet</span></div>
+        </article>
 
-    <div class="card">
-      <img src="images/iris.jpg" alt="Iris Recognition" style="width:100%;border-radius:14px;margin-bottom:1rem;opacity:0.85;"/>
-      <h3>CASIA Iris Authentication</h3>
-      <div class="meta">Deep Learning · Biometrics</div>
-      <p>EfficientNet‑B0 based iris recognition system identifying 100 subjects with ~90% accuracy and 97% left/right eye differentiation, robust to glasses.</p>
-      <div class="tags"><span class="tag">CNN</span><span class="tag">EfficientNet</span><span class="tag">Computer Vision</span></div>
-    </div>
+        <article class="card" style="--i:1">
+          <figure class="media">
+            <picture>
+              <source srcset="images/optimized/alzheimer_mri.webp" type="image/webp">
+              <img src="images/optimized/alzheimer_mri.jpg" alt="Axial MRI scan example used in Alzheimer classification project" loading="lazy">
+            </picture>
+          </figure>
+          <h3>Alzheimer MRI Classification</h3>
+          <p class="meta">Medical Imaging · Clinical ML</p>
+          <p>Augmented MRI datasets and cross-validation to improve early-detection generalization across scanners.</p>
+          <div class="tags"><span>MRI</span><span>Data Augmentation</span></div>
+        </article>
 
-    <div class="card">
-      <img src="images/alzheimer_mri.jpg" alt="Alzheimer MRI" style="width:100%;border-radius:14px;margin-bottom:1rem;opacity:0.85;"/>
-      <h3>Alzheimer MRI Classification</h3>
-      <div class="meta">Medical Imaging · AI for Healthcare</div>
-      <p>Augmented MRI dataset with deep learning models for early Alzheimer’s detection, improving diagnostic robustness and generalization.</p>
-      <div class="tags"><span class="tag">MRI</span><span class="tag">Data Augmentation</span><span class="tag">Healthcare AI</span></div>
-    </div>
+        <article class="card" style="--i:2">
+          <figure class="media">
+            <picture>
+              <source srcset="images/optimized/brain_tumor.webp" type="image/webp">
+              <img src="images/optimized/brain_tumor.jpg" alt="Brain MRI with tumor region example used for detection models" loading="lazy">
+            </picture>
+          </figure>
+          <h3>Brain Tumor Detection</h3>
+          <p class="meta">CNN · Clinical Support</p>
+          <p>Lightweight CNN classifier for fast triage in clinical workflows with interpretability maps for radiologists.</p>
+          <div class="tags"><span>TensorFlow</span><span>Interpretability</span></div>
+        </article>
 
-    <div class="card">
-      <img src="images/brain_tumor.jpg" alt="Brain Tumor MRI" style="width:100%;border-radius:14px;margin-bottom:1rem;opacity:0.85;"/>
-      <h3>Brain Tumor Detection</h3>
-      <div class="meta">CNN · Medical Diagnosis</div>
-      <p>Developed a CNN‑based classifier to detect brain tumors from MRI scans, assisting faster and more reliable clinical decision‑making.</p>
-      <div class="tags"><span class="tag">TensorFlow</span><span class="tag">CNN</span><span class="tag">MRI</span></div>
-    </div>
+        <article class="card" style="--i:3">
+          <h3>Bone Fracture X‑Ray Classification</h3>
+          <p class="meta">Computer Vision</p>
+          <p>Region-aware X‑ray classifier for multi-site deployment and automated reporting.</p>
+          <div class="tags"><span>X‑Ray</span><span>Deployment</span></div>
+        </article>
 
-    <div class="card">
-      <h3>Bone Fracture X‑Ray Classification</h3>
-      <div class="meta">Medical Vision · Deep Learning</div>
-      <p>Multi‑region X‑ray classification system differentiating fractures across body regions for accurate and timely diagnosis.</p>
-      <div class="tags"><span class="tag">X‑Ray</span><span class="tag">Deep Learning</span><span class="tag">Healthcare</span></div>
-    </div>
+        <article class="card" style="--i:4">
+          <h3>Academic Success Prediction</h3>
+          <p class="meta">XGBoost · Data Science</p>
+          <p>Feature-engineered gradient-boosted models for student outcome forecasting with explainability.</p>
+          <div class="tags"><span>XGBoost</span><span>Feature Engineering</span></div>
+        </article>
 
-    <div class="card">
-      <h3>Academic Success Prediction</h3>
-      <div class="meta">Machine Learning · XGBoost</div>
-      <p>Student outcome classification (Graduate / Dropout / Enrolled) using feature engineering and hyperparameter‑tuned XGBoost, achieving 83% accuracy.</p>
-      <div class="tags"><span class="tag">XGBoost</span><span class="tag">Data Science</span><span class="tag">ML</span></div>
-    </div>
+        <article class="card" style="--i:5">
+          <h3>Differentiated Thyroid Cancer Recurrence</h3>
+          <p class="meta">Clinical Prediction</p>
+          <p>Predictive model using clinicopathologic features for long-term recurrence risk assessment.</p>
+          <div class="tags"><span>Clinical ML</span><span>Prediction</span></div>
+        </article>
+      </div>
+    </section>
 
-    <div class="card">
-      <h3>Differentiated Thyroid Cancer Recurrence</h3>
-      <div class="meta">Clinical ML · Prediction</div>
-      <p>Predictive model using 13 clinicopathologic features over long‑term patient data, achieving 96.88% accuracy.</p>
-      <div class="tags"><span class="tag">Clinical Data</span><span class="tag">ML</span><span class="tag">Healthcare</span></div>
-    </div>
+    <section class="section container">
+      <h2 class="section-title">Publications & Robotics</h2>
+      <div class="grid">
+        <div class="card" style="--i:6">
+          <h3>Autonomous Farming Robot</h3>
+          <p class="meta">Robotics · Field Systems</p>
+          <p>Published work on an autonomous agricultural robot for targeted intervention and sensing to improve yield.</p>
+        </div>
+        <div class="card" style="--i:7">
+          <h3>IoT Smart Door Security</h3>
+          <p class="meta">Embedded · IoT</p>
+          <p>ESP8266-based door lock with sensor telemetry and remote notifications; proven in home deployments.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  </div>
-</section>
-
-<section>
-  <div class="section-title">Publications & Robotics</div>
-  <div class="grid">
-
-    <div class="card">
-      <h3>Autonomous Farming Robot</h3>
-      <div class="meta">Robotics · Environmental Analysis</div>
-      <p>Published research on an autonomous agricultural robot capable of weeding, spraying, and real‑time environmental sensing to improve yield and reduce labor.</p>
-      <div class="tags"><span class="tag">Robotics</span><span class="tag">IoT</span><span class="tag">Autonomy</span></div>
-    </div>
-
-    <div class="card">
-      <h3>IoT‑Based Smart Door Security</h3>
-      <div class="meta">IoT · Embedded Systems</div>
-      <p>ESP8266‑based smart lock system with sensors, alerts, LCD feedback, and mobile notifications via Blynk for enhanced home security.</p>
-      <div class="tags"><span class="tag">ESP8266</span><span class="tag">IoT</span><span class="tag">Embedded</span></div>
-    </div>
-
-  </div>
-</section>
-
-<footer>
-  © 2026 Ben‑Yahu · Built with curiosity & intent
-</footer>
-
+  <footer class="site-footer">
+    <div class="container">© 2026 Ben‑Yahu · Built with curiosity & intent</div>
+  </footer>
 </body>
 </html>
